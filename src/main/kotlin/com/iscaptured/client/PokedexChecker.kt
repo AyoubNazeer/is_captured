@@ -1,6 +1,5 @@
 package com.iscaptured.client
 
-import com.cobblemon.mod.common.CobblemonClientImplementation
 import com.cobblemon.mod.common.api.pokedex.PokedexEntryProgress
 import com.cobblemon.mod.common.client.CobblemonClient
 import com.cobblemon.mod.common.pokemon.Species
@@ -17,11 +16,10 @@ object PokedexChecker {
         if (client.player == null) return false
 
         return try {
-            // Access the client-side pokedex data
             val pokedex = CobblemonClient.clientPokedexData
             val speciesId = species.resourceIdentifier
-            val record = pokedex?.getSpeciesRecord(speciesId)
-            record?.knowledge == PokedexEntryProgress.CAUGHT
+            val highestKnowledge = pokedex.getHighestKnowledgeForSpecies(speciesId)
+            highestKnowledge == PokedexEntryProgress.CAUGHT
         } catch (e: Exception) {
             IsCapturedClient.LOGGER.debug("Could not check pokedex for species: ${species.name}", e)
             false
@@ -38,8 +36,8 @@ object PokedexChecker {
         return try {
             val pokedex = CobblemonClient.clientPokedexData
             val speciesId = species.resourceIdentifier
-            val record = pokedex?.getSpeciesRecord(speciesId)
-            record != null && record.knowledge != PokedexEntryProgress.NONE
+            val highestKnowledge = pokedex.getHighestKnowledgeForSpecies(speciesId)
+            highestKnowledge != PokedexEntryProgress.NONE
         } catch (e: Exception) {
             IsCapturedClient.LOGGER.debug("Could not check pokedex for species: ${species.name}", e)
             false
