@@ -11,13 +11,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 /**
  * Mixin to modify the Pokemon's display name to include capture status and gender indicators.
  */
-@Mixin(PokemonEntity.class)
+@Mixin(value = PokemonEntity.class, remap = false)
 public abstract class PokemonEntityMixin {
 
     /**
      * Modifies the display name of the Pokemon to include capture indicator and gender symbol.
      */
-    @Inject(method = "getDisplayName", at = @At("RETURN"), cancellable = true)
+    @Inject(method = "getName", at = @At("RETURN"), cancellable = true)
     private void modifyDisplayName(CallbackInfoReturnable<Text> cir) {
         PokemonEntity self = (PokemonEntity) (Object) this;
         Text originalName = cir.getReturnValue();
