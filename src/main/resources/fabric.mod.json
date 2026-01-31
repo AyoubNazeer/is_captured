@@ -1,0 +1,34 @@
+{
+    "schemaVersion": 1,
+    "id": "iscaptured",
+    "version": "${version}",
+    "name": "Is Captured",
+    "description": "Displays a Pokeball icon next to Pokemon names if you have already captured that species, along with gender indicators.",
+    "authors": [
+        "AyoubNazeer"
+    ],
+    "contact": {},
+    "license": "MIT",
+    "icon": "assets/iscaptured/icon.png",
+    "environment": "client",
+    "entrypoints": {
+        "client": [
+            {
+                "adapter": "kotlin",
+                "value": "com.iscaptured.client.IsCapturedClient"
+            }
+        ]
+    },
+    "mixins": [
+        "iscaptured.mixins.json"
+    ],
+    "accessWidener": "iscaptured.accesswidener",
+    "depends": {
+        "fabricloader": ">=0.16.0",
+        "minecraft": "~1.21.1",
+        "java": ">=21",
+        "fabric-api": "*",
+        "cobblemon": ">=1.6.0",
+        "fabric-language-kotlin": ">=1.10.0"
+    }
+}

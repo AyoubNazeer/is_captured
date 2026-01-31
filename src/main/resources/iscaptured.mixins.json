@@ -1,0 +1,12 @@
+{
+    "required": true,
+    "minVersion": "0.8",
+    "package": "com.iscaptured.mixin",
+    "compatibilityLevel": "JAVA_21",
+    "client": [
+        "PokemonEntityMixin"
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    }
+}
