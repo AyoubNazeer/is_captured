@@ -4,7 +4,7 @@
     "package": "com.iscaptured.mixin",
     "compatibilityLevel": "JAVA_21",
     "client": [
-        "PokemonRendererMixin"
+        "PokemonEntityMixin"
     ],
     "injectors": {
         "defaultRequire": 1
